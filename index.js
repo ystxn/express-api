@@ -23,7 +23,7 @@ app.post('/', async ({ body }, response) => {
                 const contentType = response.headers.get('Content-type').split(';')[0];
                 return contentType === 'text/plain' ? response.text() : response.json();
             } else {
-                throw new Error(await response.json());
+                throw new Error(JSON.stringify(await response.json()));
             }
         })
         .catch((error) => console.error(error));
